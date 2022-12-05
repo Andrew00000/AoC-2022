@@ -13,6 +13,6 @@
         => startParcel <= tested.startParcel && endParcel >= tested.endParcel;
 
     public bool IsOverLapping(Assignment tested)
-        => startParcel >= tested.startParcel && startParcel <= tested.startParcel
+        => startParcel >= tested.startParcel && startParcel <= tested.endParcel
         || endParcel >= tested.startParcel && endParcel <= tested.endParcel;
 }
