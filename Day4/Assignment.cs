@@ -14,5 +14,6 @@
 
     public bool IsOverLapping(Assignment tested)
         => startParcel >= tested.startParcel && startParcel <= tested.endParcel
-        || endParcel >= tested.startParcel && endParcel <= tested.endParcel;
+        || endParcel >= tested.startParcel && endParcel <= tested.endParcel
+        || IsContatining(tested);
 }

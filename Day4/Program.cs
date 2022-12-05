@@ -14,6 +14,6 @@ var numberOfFullContains = pairAssigments.Where(v => v.Item1.IsContatining(v.Ite
 
 Console.WriteLine(numberOfFullContains);
 
-var numberOfOverlappingPairs = pairAssigments.Where(v => v.Item1.IsOverLapping(v.Item2) || v.Item2.IsOverLapping(v.Item1)).Count();
+var numberOfOverlappingPairs = pairAssigments.Where(v => v.Item1.IsOverLapping(v.Item2)).Count();
 
 Console.WriteLine(numberOfOverlappingPairs);
