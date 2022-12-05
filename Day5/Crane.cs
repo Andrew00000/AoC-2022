@@ -1,5 +1,6 @@
 ﻿public class Crane
-{public string Print(IEnumerable<Stack<char>> sortedCrates)
+{
+    public string Print(IEnumerable<Stack<char>> sortedCrates)
     {
         var topText = "";
 
@@ -47,7 +48,7 @@
         return crates;
     }
 
-    internal IEnumerable<Stack<char>> SortByMovingMore(Stack<char>[] crates, IEnumerable<Command> commands)
+    public IEnumerable<Stack<char>> SortByMovingMore(Stack<char>[] crates, IEnumerable<Command> commands)
     {
         foreach (var command in commands)
         {
