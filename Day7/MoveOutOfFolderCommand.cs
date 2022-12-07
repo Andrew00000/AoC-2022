@@ -15,11 +15,11 @@ public class MoveOutOfFolderCommand : ICommands
         this.repeat = repeat;
     }
 
-    public void Execute()
+    public void Execute(FileSystem fileSystem)
     {
         for (int i = 0; i < repeat; i++)
         {
-            Parser.GoUpOneFolder();
+            fileSystem.GoUpOneFolder();
         }
     }
 }

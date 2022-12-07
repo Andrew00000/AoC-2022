@@ -11,6 +11,6 @@ public class MoveIntoFolderCommand : ICommands
         this.childName = childName;
     }
 
-    public void Execute()
-        => Parser.MoveIntoChild(childName);
+    public void Execute(FileSystem fileSystem)
+        => fileSystem.MoveIntoChild(childName);
 }

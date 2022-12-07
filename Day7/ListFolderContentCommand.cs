@@ -21,10 +21,10 @@ public class ListFolderContentCommand : ICommands
         }
     }
 
-    public void Execute()
+    public void Execute(FileSystem fileSystem)
     {
-        Parser.FillFolderChildren(FoldersToShow);
-        Parser.FillFolderFiles(FajlsToShow);
+        fileSystem.FillFolderChildren(FoldersToShow);
+        fileSystem.FillFolderFiles(FajlsToShow);
     }
 }
 

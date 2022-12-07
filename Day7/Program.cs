@@ -1,6 +1,8 @@
 ﻿var input = File.ReadAllText($@"{Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName}\in.txt");
 
-var rootFolder = Parser.Parse(input);
+var parser = new Parser();
+
+var rootFolder = parser.Parse(input);
 
 var allFolders = rootFolder.GetAllChildrenFoldersAndSubFolders().ToList();
 

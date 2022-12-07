@@ -2,5 +2,5 @@
 
 public interface ICommands
 {
-    public void Execute();
+    public void Execute(FileSystem fileSystem);
 }

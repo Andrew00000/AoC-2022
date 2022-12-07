@@ -2,6 +2,6 @@
 
 public class MoveToRootFolderCommand : ICommands
 {
-    public void Execute()
-        => Parser.ResetToRootFolder();
+    public void Execute(FileSystem fileSystem)
+        => fileSystem.ResetToRootFolder();
 }

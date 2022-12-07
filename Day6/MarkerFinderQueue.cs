@@ -1,10 +1,10 @@
 ﻿public class MarkerFinderQueue<T>
 {
     private Queue<T> queue = new(); 
-    private int queueLenght = 0;
-    public MarkerFinderQueue(int queueLenght)
+    private int queueLength = 0;
+    public MarkerFinderQueue(int queueLength)
     {
-        this.queueLenght = queueLenght;
+        this.queueLength = queueLength;
     }
 
     private Queue<T> Shift(T nextElement)
@@ -23,7 +23,7 @@
     {
         var index = 0;
 
-        while(queue.Count != queueLenght)
+        while(queue.Count != queueLength)
         {
             if (index == input.Count())
             {
