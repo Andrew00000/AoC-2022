@@ -1,7 +1,6 @@
-﻿internal class Parser
+﻿public class Parser
 {
-
-    internal IEnumerable<Command> Parse(string[] input)
+    public IEnumerable<Command> Parse(string[] input)
     {
         var commands = new List<Command>();
         var factory = new CommandFactory();

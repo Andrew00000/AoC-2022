@@ -1,22 +1,26 @@
 ﻿public class Anaconda
 {
-    private List<Snek> sneks = new();
-    private CommandFactory factory;
+    private readonly List<Snek> sneks = new();
 
-    public Anaconda(int length, CommandFactory factory)
+    public Anaconda(int length)
     {
         for (int i = 0; i < length; i++)
         {
             sneks.Add(new Snek());
         }
-
-        this.factory = factory;
     }
 
     public int GetTouchedFields()
         => sneks.Last().GetNumberOfTouchedFields();
 
-    internal void Move(int y, int x)
+    public void Move(int y, int x)
     {
+        var tempY = y;
+        var tempX = x;
+
+        for (int i = 0; i < sneks.Count; i++)
+        {
+            (tempY, tempX) = sneks[i].HeadMoves(tempY, tempX);
+        }
     }
 }
