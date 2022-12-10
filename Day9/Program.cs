@@ -27,5 +27,5 @@ anacondaTimer.Stop();
 
 Console.WriteLine(snek.GetNumberOfTouchedFields());
 Console.WriteLine(anaconda.GetTouchedFields());
-Console.WriteLine($"snek: {snekTimer.Elapsed}");
-Console.WriteLine($"conda: {anacondaTimer.Elapsed}");
+Console.WriteLine($"snek: {snekTimer.Elapsed.TotalMilliseconds} ms");
+Console.WriteLine($"conda: {anacondaTimer.Elapsed.TotalMilliseconds} ms");
