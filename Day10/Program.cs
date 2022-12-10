@@ -7,7 +7,6 @@ part1Timer.Start();
 var parser = new Parser();
 
 var ints = parser.Parse(input).ToArray();
-
 var calculator = new Calculator();
 
 calculator.Calculate(ints);
@@ -19,7 +18,6 @@ part2Timer.Start();
 var parser2 = new Parser();
 
 var ints2 = parser2.Parse(input).ToArray();
-
 var calculator2 = new Calculator();
 
 calculator2.Print(ints2);
