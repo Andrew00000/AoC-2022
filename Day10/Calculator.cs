@@ -8,11 +8,9 @@
     {
         x = 1L; 
 
-        var targets = new long[] { 19, 59, 99, 139, 179, 219 };
-        
         for (int i = 0; i < ints.Length; i++)
         {
-            if (targets.Contains(i))
+            if (i < 220 && i % 40 == 19)
             {
                 solution += (i + 1) * x;
             }
