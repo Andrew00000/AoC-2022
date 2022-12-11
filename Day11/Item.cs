@@ -1,16 +1,15 @@
 ﻿internal class Item
 {
     public long Value { get; private set;}
-    public bool AmICalming { get; private set;} = true;
 
-    public Item(int value, bool calming)
+    public Item(int value)
     {
         Value = value;
-        AmICalming = calming;
     }
 
     public void Add(int value)
         => Value += value;
+
     public void Multiply(int value)
         => Value *= value;
 

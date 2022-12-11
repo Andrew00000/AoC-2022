@@ -5,9 +5,10 @@ var input = File.ReadAllText($@"{Directory.GetParent(Environment.CurrentDirector
 var calmingTimer = new Stopwatch();
 calmingTimer.Start();
 
-var calming = true;
+var IsUltraCoolOn = false;
+var interestDropRate = 3;
 var parser = new Parser();
-(var monkeys, var number) = parser.Parse(input, calming);
+var monkeys = parser.Parse(input, IsUltraCoolOn, interestDropRate);
 
 var fatherTime = new FatherTime(monkeys);
 
@@ -28,10 +29,10 @@ var timer = new Stopwatch();
 timer.Start();
 
 var parser2 = new Parser();
-var calming2 = false;
-(var monkeys2, number) = parser2.Parse(input, calming2);
+var Is2Cool4School = true;
+var monkeys2 = parser2.Parse(input, Is2Cool4School);
 
-var fatherTime2 = new FatherTime(monkeys2, number);
+var fatherTime2 = new FatherTime(monkeys2);
 
 var rounds2 = 10000;
 
