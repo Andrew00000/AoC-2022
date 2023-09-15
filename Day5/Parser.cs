@@ -1,4 +1,6 @@
-﻿public class Parser
+﻿using System.Text;
+
+public class Parser
 {
     public (IEnumerable<Stack<char>> crates, IEnumerable<Command> commands) ParseInputToStackColumns(string input)
     {
@@ -45,17 +47,17 @@
 
         for (int i = 0; i < splitInput[0].Length; i += 4)
         {
-            var column = "";
+            var column = new StringBuilder();
 
             for (int j = splitInput.Length - 1; j >= 0; j--)
             {
                 if (char.IsLetter(splitInput[j][i + 1]))
                 {
-                    column += (splitInput[j][i + 1]);
+                    column.Append(splitInput[j][i + 1]);
                 }
             }
 
-            columns.Add(column);
+            columns.Add(column.ToString());
         }
 
         return columns;

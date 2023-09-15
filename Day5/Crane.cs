@@ -1,6 +1,6 @@
 ﻿public class Crane
 {
-    public string Print(IEnumerable<Stack<char>> sortedCrates)
+    public string GetTopCrates(IEnumerable<Stack<char>> sortedCrates)
     {
         var topText = "";
 
@@ -12,7 +12,7 @@
         return topText;
     }
 
-    public string Print(IEnumerable<string> sortedCrates)
+    public string GetTopCrates(IEnumerable<string> sortedCrates)
     {
         var topText = "";
 

@@ -1,6 +1,11 @@
 ﻿using System.Diagnostics;
 
 var input = File.ReadAllText($@"{Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName}\in.txt");
+var solutionOne = "RTGWZTHLD";
+var solutionTwo = "STHGRZZFR";
+
+
+//Problem One: https://adventofcode.com/2022/day/5
 
 var parser = new Parser();
 
@@ -10,30 +15,41 @@ var crane = new Crane();
 
 var sortedCrateColumnStacks = crane.SortByMovingOne(crateColumnStacks.ToArray(), commands);
 
-var topCrates = crane.Print(sortedCrateColumnStacks);
+var topCrates = crane.GetTopCrates(sortedCrateColumnStacks);
 
-Console.WriteLine(topCrates);
+var problemOneResult = solutionOne == topCrates ? $"Yes the answer is {topCrates}"
+                                                : $"No the answer isnt {topCrates}";
 
-var crateColumnStrings = parser.ParseCratesInputToStringColumns(input.Split(Environment.NewLine + Environment.NewLine)[0]);
-crateColumnStacks = parser.ParseCratesInputToStackColumns(input.Split(Environment.NewLine + Environment.NewLine)[0]);
+Console.WriteLine(problemOneResult);
+
+//Problem Two: https://adventofcode.com/2022/day/5
 
 var stringTimer = new Stopwatch();
 stringTimer.Start();
+
+var crateColumnStrings = parser.ParseCratesInputToStringColumns(input.Split(Environment.NewLine + Environment.NewLine)[0]);
+
 var sortedCrateColumnStrings = crane.SortByMovingMore(crateColumnStrings.ToArray(), commands);
 stringTimer.Stop();
 
 var tempStackTimer = new Stopwatch();
 tempStackTimer.Start();
+
+crateColumnStacks = parser.ParseCratesInputToStackColumns(input.Split(Environment.NewLine + Environment.NewLine)[0]);
+
 var sortedCrateColumnsStackMovedMore = crane.SortByMovingMore(crateColumnStacks.ToArray(), commands);
 tempStackTimer.Stop();
 
-var topCrates22 = crane.Print(sortedCrateColumnsStackMovedMore);
-var topCrates21 = crane.Print(sortedCrateColumnStrings);
+var topCratesWithStrings = crane.GetTopCrates(sortedCrateColumnStrings);
+var topCratesWithStacks = crane.GetTopCrates(sortedCrateColumnsStackMovedMore);
 
-Console.WriteLine(topCrates21);
+var problemTwoResult = solutionTwo == topCratesWithStacks ? $"Yes the answer is {topCratesWithStacks}"
+                                                  : $"No the answer isnt {topCratesWithStacks}";
+
+Console.WriteLine(problemTwoResult);
 
 Console.WriteLine();
-Console.WriteLine(topCrates21 == topCrates22);
+Console.WriteLine(topCratesWithStrings == topCratesWithStacks);
 
 Console.WriteLine(stringTimer.Elapsed);
 Console.WriteLine(tempStackTimer.Elapsed);
