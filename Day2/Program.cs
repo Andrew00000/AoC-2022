@@ -7,12 +7,6 @@ var input = File.ReadAllLines($@"{Directory.GetParent(Environment.CurrentDirecto
 var solution1 = 9241;
 var solution2 = 14610;
 
-if (input is null)
-{
-    Console.WriteLine("Input missing");
-}
-
-
 //Problem One: https://adventofcode.com/2022/day/2
 
 var scoresDictionary = new Dictionary<string, int>

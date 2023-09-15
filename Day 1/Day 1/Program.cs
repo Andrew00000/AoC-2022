@@ -2,11 +2,6 @@
 var solution1 = 66719;
 var solution2 = 198551;
 
-if (input is null)
-{
-    Console.WriteLine("Input missing");
-}
-
 //Problem One: https://adventofcode.com/2022/day/1
 
 var caloriesByElfves = input!.Split(Environment.NewLine + Environment.NewLine).ToList()
