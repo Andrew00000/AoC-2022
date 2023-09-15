@@ -32,24 +32,32 @@ var crateColumnStrings = parser.ParseCratesInputToStringColumns(input.Split(Envi
 var sortedCrateColumnStrings = crane.SortByMovingMore(crateColumnStrings.ToArray(), commands);
 stringTimer.Stop();
 
-var tempStackTimer = new Stopwatch();
-tempStackTimer.Start();
+var stackTimer = new Stopwatch();
+stackTimer.Start();
 
 crateColumnStacks = parser.ParseCratesInputToStackColumns(input.Split(Environment.NewLine + Environment.NewLine)[0]);
 
 var sortedCrateColumnsStackMovedMore = crane.SortByMovingMore(crateColumnStacks.ToArray(), commands);
-tempStackTimer.Stop();
+stackTimer.Stop();
 
 var topCratesWithStrings = crane.GetTopCrates(sortedCrateColumnStrings);
 var topCratesWithStacks = crane.GetTopCrates(sortedCrateColumnsStackMovedMore);
 
 var problemTwoResult = solutionTwo == topCratesWithStacks ? $"Yes the answer is {topCratesWithStacks}"
-                                                  : $"No the answer isnt {topCratesWithStacks}";
+                                                          : $"No the answer isnt {topCratesWithStacks}";
 
 Console.WriteLine(problemTwoResult);
 
 Console.WriteLine();
-Console.WriteLine(topCratesWithStrings == topCratesWithStacks);
 
-Console.WriteLine(stringTimer.Elapsed);
-Console.WriteLine(tempStackTimer.Elapsed);
+if (topCratesWithStacks == topCratesWithStrings )
+{
+    Console.WriteLine("Run comparison between using strings vs using stacks:");
+
+    Console.WriteLine(stringTimer.Elapsed);
+    Console.WriteLine(stackTimer.Elapsed);
+}
+else
+{
+    Console.WriteLine("Results are different");
+}
