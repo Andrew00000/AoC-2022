@@ -52,10 +52,10 @@ Console.WriteLine();
 
 if (topCratesWithStacks == topCratesWithStrings )
 {
-    Console.WriteLine("Run comparison between using strings vs using stacks:");
+    Console.WriteLine("Running time comparison between using strings vs using stacks:");
 
-    Console.WriteLine(stringTimer.Elapsed);
-    Console.WriteLine(stackTimer.Elapsed);
+    Console.WriteLine($"Using strings: \t {stringTimer.Elapsed}");
+    Console.WriteLine($"Using stacks: \t {stackTimer.Elapsed}");
 }
 else
 {

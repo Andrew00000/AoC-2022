@@ -1,28 +1,52 @@
-﻿using System.Diagnostics;
+﻿using Day6;
+using System.Diagnostics;
 
-var input = File.ReadAllText($@"{Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName}\in.txt");
-
-var lazyFinder = new MarkerFinderLazy();
-
-var queueFinder = new MarkerFinderQueue<char>(14);
+var input = File.ReadAllText($@"{Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName}\in.txt").ToArray();
+var solutionOne = 1876;
+var solutionTwo = 2202;
 
 
-var indexOfMarker = lazyFinder.FindMarker(input, 4);
+//Problem One: https://adventofcode.com/2022/day/6
 
-Console.WriteLine(indexOfMarker);
+var setFinder = new MarkerFinder(new WithSets());
+var queueFinder = new MarkerFinder(new WithQueue());
 
-var lazyTimer = new Stopwatch();
-lazyTimer.Start();
-var indexOfMessageLazy = lazyFinder.FindMarker(input, 14);
-lazyTimer.Stop();
 
-var timer = new Stopwatch();
-timer.Start();
-var indexOfMessageQueue = queueFinder.FindMarker(input.ToCharArray());
-timer.Stop();
+var indexOfMarker = setFinder.FindMarker(input, 4);
 
-Console.WriteLine(indexOfMessageQueue);
-Console.WriteLine(indexOfMessageLazy == indexOfMessageQueue);
+var problemOneResult = solutionOne == indexOfMarker ? $"Yes the answer is {indexOfMarker}"
+                                                    : $"No the answer isnt {indexOfMarker}";
 
-Console.WriteLine($"lazy {lazyTimer.Elapsed}");
-Console.WriteLine($"queue {timer.Elapsed}");
+Console.WriteLine(problemOneResult);
+
+
+//Problem Two: https://adventofcode.com/2022/day/6
+
+var setTimer = new Stopwatch();
+setTimer.Start();
+var indexOfMessageSet = setFinder.FindMarker(input, 14);
+setTimer.Stop();
+
+var queueTimer = new Stopwatch();
+queueTimer.Start();
+var indexOfMessageQueue = queueFinder.FindMarker(input, 14);
+queueTimer.Stop();
+
+var problemTwoResult = solutionTwo == indexOfMessageQueue ? $"Yes the answer is {indexOfMessageQueue}"
+                                                          : $"No the answer isnt {indexOfMessageQueue}";
+
+Console.WriteLine(problemTwoResult);
+
+Console.WriteLine();
+
+if (indexOfMessageSet == indexOfMessageQueue)
+{
+    Console.WriteLine("Running time comparison between using sets vs using queue:");
+
+    Console.WriteLine($"Using sets: \t {setTimer.Elapsed}");
+    Console.WriteLine($"Using queue: \t {queueTimer.Elapsed}");
+}
+else
+{
+    Console.WriteLine("Results are different");
+}

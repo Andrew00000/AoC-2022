@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-
-public class MarkerFinderLazy
+﻿public class WithSets : IMarkerFinderApproach
 {
-    public int FindMarker(string input, int markerLength)
+    public int FindMarker(char[] input, int markerLength)
     {
         if (input.Length < markerLength)
         {
-            throw new ArgumentException("No solution biatch");
+            throw new ArgumentException("No solution... wamp wamp waaamp");
         }
 
         for (int i = markerLength; i <= input.Length; i++)
@@ -19,6 +17,6 @@ public class MarkerFinderLazy
             }
         }
 
-        throw new ArgumentException("No solution biatch");
+        throw new ArgumentException("No solution");
     }
 }
