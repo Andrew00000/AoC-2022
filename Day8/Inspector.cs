@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-public class Inspector
+﻿public class Inspector
 {
-    private int[][] table;
+    private readonly int[][] table;
 
     public Inspector(int[][] table)
     {
@@ -19,7 +17,7 @@ public class Inspector
             {
                 visibilityTable[i][j] = IsVisibleFromAtLeastOneSide(i, j);
             }
-        }        
+        }
 
         return visibilityTable;
     }
@@ -51,7 +49,7 @@ public class Inspector
 
         var isVisible = fromTop || fromBottom || fromLeft || fromRight;
 
-        while(isVisible && index < table.Length)
+        while (isVisible && index < table.Length)
         {
             if (fromTop && InRange(i - index, j))
             {
@@ -138,7 +136,7 @@ public class Inspector
 
     private bool IsVisible((int i, int j) blocker, (int i, int j) tested)
         => table[tested.i][tested.j] > table[tested.i + blocker.i][tested.j + blocker.j];
-    
+
 
     private bool[][] InitializeTable(int[][] table)
     {

@@ -1,9 +1,5 @@
 ﻿internal class Parser
 {
-    public Parser()
-    {
-    }
-
     public int[][] Parse(string[] input)
     {
         var table = new int[input.Length][];

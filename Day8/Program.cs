@@ -1,6 +1,9 @@
-﻿using System.Data;
+﻿var input = File.ReadAllLines($@"{Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName}\in.txt");
+var solutionOne = 1812;
+var solutionTwo = 315495;
 
-var input = File.ReadAllLines($@"{Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName}\in.txt");
+
+//Problem One: https://adventofcode.com/2022/day/8
 
 var parser = new Parser();
 
@@ -14,13 +17,19 @@ var sum = 0;
 
 foreach (var row in visibilityTable)
 {
-	foreach (var spot in row)
-	{
-		sum += Convert.ToInt32(spot);
-	}
+    foreach (var spot in row)
+    {
+        sum += Convert.ToInt32(spot);
+    }
 }
 
-Console.WriteLine(sum);
+var problemOneResult = solutionOne == sum ? $"Yes the answer is {sum}"
+                                          : $"No the answer isnt {sum}";
+
+Console.WriteLine(problemOneResult);
+
+
+//Problem Two: https://adventofcode.com/2022/day/8
 
 var scoreTable = inspector.GetScenicScore();
 
@@ -34,4 +43,7 @@ foreach (var row in scoreTable)
     }
 }
 
-Console.WriteLine(max);
+var problemTwoResult = solutionTwo == max ? $"Yes the answer is {max}"
+                                          : $"No the answer isnt {max}";
+
+Console.WriteLine(problemTwoResult);
