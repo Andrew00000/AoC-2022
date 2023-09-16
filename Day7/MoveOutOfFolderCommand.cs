@@ -8,7 +8,7 @@ namespace Day7;
 
 public class MoveOutOfFolderCommand : ICommands
 {
-    private int repeat = 1;
+    private readonly int repeat = 1;
 
     public MoveOutOfFolderCommand(int repeat)
     {

@@ -2,8 +2,8 @@
 
 public class ListFolderContentCommand : ICommands
 {
-    public HashSet<Folder> FoldersToShow { get; init; } = new();
-    public HashSet<Fajl> FajlsToShow { get; init; } = new();
+    private readonly HashSet<Folder> folders = new();
+    private readonly HashSet<File> files = new();
 
     public ListFolderContentCommand(string[] items)
     {
@@ -11,11 +11,11 @@ public class ListFolderContentCommand : ICommands
         {
             if (item.StartsWith("dir "))
             {
-                FoldersToShow.Add(new Folder { Name = item.Split(' ')[1] });
+                folders.Add(new Folder { Name = item.Split(' ')[1] });
             }
             else
             {
-                FajlsToShow.Add(new Fajl { Name = item.Split(' ')[1], 
+                files.Add(new File { Name = item.Split(' ')[1], 
                                            Size = Int64.Parse(item.Split(' ')[0]) });
             }
         }
@@ -23,8 +23,8 @@ public class ListFolderContentCommand : ICommands
 
     public void Execute(FileSystem fileSystem)
     {
-        fileSystem.FillFolderChildren(FoldersToShow);
-        fileSystem.FillFolderFiles(FajlsToShow);
+        fileSystem.FillFolderChildren(folders);
+        fileSystem.FillFolderFiles(files);
     }
 }
 

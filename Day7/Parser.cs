@@ -3,14 +3,14 @@ using System.Text.RegularExpressions;
 
 public class Parser
 {
-    private FileSystem fileSystem = new();
+    private readonly FileSystem fileSystem = new();
     public Folder Parse(string input)
     {
         var commands = ParseToCommands(input);
 
         commands.ForEach(c => c.Execute(fileSystem));
 
-        return fileSystem.GetRootFolder();
+        return fileSystem.Root;
     }
 
     private List<ICommands> ParseToCommands(string input)
