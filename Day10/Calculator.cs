@@ -6,11 +6,15 @@
 
     internal void Calculate(int[] ints)
     {
-        x = 1L; 
+        x = 1L;
+        var numberOfCycles = 220;
+        var width = 40;
+        var middleRegister = 19;
 
         for (int i = 0; i < ints.Length; i++)
         {
-            if (i < 220 && i % 40 == 19)
+            var isPartOfTheSolution = i < numberOfCycles && i % width == middleRegister;
+            if (isPartOfTheSolution)
             {
                 solution += (i + 1) * x;
             }
@@ -31,9 +35,9 @@
         {
             var pixel = ' ';
 
-            var ShouldPrint = x - 1 <= i % width && i % width <= x + 1;
+            var ShouldItPrint = x - 1 <= i % width && i % width <= x + 1;
 
-            if (ShouldPrint)
+            if (ShouldItPrint)
             {
                 pixel = '#';
             }

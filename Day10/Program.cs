@@ -1,27 +1,41 @@
 ﻿using System.Diagnostics;
 
 var input = File.ReadAllLines($@"{Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName}\in.txt");
+var solutionOne = 12740;
+//var solutionTwo = "RBPARAGF";
 
-var part1Timer = new Stopwatch();
-part1Timer.Start();
+
+//Problem One: https://adventofcode.com/2022/day/10
+
+var partOneTimer = new Stopwatch();
+partOneTimer.Start();
 var parser = new Parser();
 
 var ints = parser.Parse(input).ToArray();
 var calculator = new Calculator();
 
 calculator.Calculate(ints);
-part1Timer.Stop();
-Console.WriteLine(calculator.GetSolution());
+partOneTimer.Stop();
 
-var part2Timer = new Stopwatch();
-part2Timer.Start();
-var parser2 = new Parser();
+var problemOneResult = solutionOne == calculator.GetSolution() ? $"Yes the answer is {calculator.GetSolution()}"
+                                                               : $"No the answer isnt {calculator.GetSolution()}";
 
-var ints2 = parser2.Parse(input).ToArray();
+Console.WriteLine(problemOneResult);
+
+
+//Problem Two: https://adventofcode.com/2022/day/10
+
+var partTwoTimer = new Stopwatch();
+partTwoTimer.Start();
+var parserTwo = new Parser();
+
+var ints2 = parserTwo.Parse(input).ToArray();
 var calculator2 = new Calculator();
 
+Console.WriteLine("Solution part two:");
 calculator2.Print(ints2);
-part2Timer.Stop();
+partTwoTimer.Stop();
 
-Console.WriteLine($"part1: {part1Timer.Elapsed.TotalMilliseconds} ms");
-Console.WriteLine($"part2: {part2Timer.Elapsed.TotalMilliseconds} ms");
+Console.WriteLine();
+Console.WriteLine($"Part one took: {partOneTimer.Elapsed.TotalMilliseconds} ms");
+Console.WriteLine($"Part two took: {partTwoTimer.Elapsed.TotalMilliseconds} ms");
