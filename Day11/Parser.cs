@@ -37,7 +37,7 @@
 
             magicNumber = IsUltraCoolOn ? magicNumber : interestDropRate;
 
-            if (Int32.TryParse(valueString, out var value))
+            if (int.TryParse(valueString, out var value))
             {
                 monkeys.Add(monkeyFactory.CreateMonkey(monkeyID, items, operation, value, condition, trueTarget, falseTarget, IsUltraCoolOn, magicNumber));
             }

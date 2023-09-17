@@ -1,5 +1,12 @@
 ﻿internal class ModuloStrategy : ICalmingStrategy
 {
-    public void CalmTheFuckDown(Item item, int interestDropRate)
+    private readonly int interestDropRate;
+
+    public ModuloStrategy(int interestDropRate)
+    {
+        this.interestDropRate = interestDropRate;
+    }
+
+    public void CalmDown(Item item)
         => item.Modulo(interestDropRate);
 }

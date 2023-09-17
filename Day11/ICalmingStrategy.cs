@@ -1,4 +1,4 @@
 ﻿internal interface ICalmingStrategy
 {
-    public void CalmTheFuckDown(Item item, int interestDropRate);
+    public void CalmDown(Item item);
 }
