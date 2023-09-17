@@ -1,26 +1,26 @@
-﻿public class Anaconda
+﻿public class Anaconda : IDangerNoodle
 {
-    private readonly List<Snek> sneks = new();
+    private readonly List<Snekk> snekks = new();
 
     public Anaconda(int length)
     {
         for (int i = 0; i < length; i++)
         {
-            sneks.Add(new Snek());
+            snekks.Add(new Snekk());
         }
     }
 
-    public int GetTouchedFields()
-        => sneks.Last().GetNumberOfTouchedFields();
+    public int GetNumberOfTouchedFields()
+        => snekks.Last().GetNumberOfTouchedFields();
 
     public void Move(int y, int x)
     {
         var tempY = y;
         var tempX = x;
 
-        for (int i = 0; i < sneks.Count; i++)
+        for (int i = 0; i < snekks.Count; i++)
         {
-            (tempY, tempX) = sneks[i].HeadMoves(tempY, tempX);
+            (tempY, tempX) = snekks[i].HeadMoves(tempY, tempX);
         }
     }
 }

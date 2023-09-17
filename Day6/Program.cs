@@ -43,8 +43,8 @@ if (indexOfMessageSet == indexOfMessageQueue)
 {
     Console.WriteLine("Running time comparison between using sets vs using queue:");
 
-    Console.WriteLine($"Using sets: \t {setTimer.Elapsed}");
-    Console.WriteLine($"Using queue: \t {queueTimer.Elapsed}");
+    Console.WriteLine($"Using sets: \t {setTimer.Elapsed.TotalMilliseconds} ms");
+    Console.WriteLine($"Using queue: \t {queueTimer.Elapsed.TotalMilliseconds} ms");
 }
 else
 {

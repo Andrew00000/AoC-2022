@@ -1,4 +1,4 @@
-﻿public class Snek
+﻿public class Snekk : IDangerNoodle
 {
     private int diffToHeady = 0;
     private int diffToHeadx = 0;
@@ -19,11 +19,11 @@
         {
             return;
         }
-        else if (ShouldMoveOrtogonally(diffToHeady, diffToHeadx))
+        else if (ShouldItMoveOrtogonally(diffToHeady, diffToHeadx))
         {
             MoveOrtogonally();
         }
-        else if (ShouldMoveDiagonally(diffToHeady, diffToHeadx)) 
+        else if (ShouldItMoveDiagonally(diffToHeady, diffToHeadx)) 
         {
             MoveDiagonally();
         }
@@ -85,10 +85,10 @@
     private bool IsTouching(int diffToHeady, int diffToHeadx)
         => Math.Abs(diffToHeady) <= 1 && Math.Abs(diffToHeadx) <= 1;
 
-    private bool ShouldMoveOrtogonally(int diffToHeady, int diffToHeadx)
+    private bool ShouldItMoveOrtogonally(int diffToHeady, int diffToHeadx)
         => Math.Abs(diffToHeady) + Math.Abs(diffToHeadx) == 2;
 
-    private bool ShouldMoveDiagonally(int diffToHeady, int diffToHeadx)
+    private bool ShouldItMoveDiagonally(int diffToHeady, int diffToHeadx)
         => Math.Abs(diffToHeady) + Math.Abs(diffToHeadx) == 3
         || (Math.Abs(diffToHeady) == 2 && Math.Abs(diffToHeadx) == 2);
 

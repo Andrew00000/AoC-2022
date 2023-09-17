@@ -1,17 +1,30 @@
 ﻿using System.Diagnostics;
 
 var input = File.ReadAllLines($@"{Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName}\in.txt");
+var solutionOne = 6098;
+var solutionTwo = 2597;
 
-var snekTimer = new Stopwatch();
-snekTimer.Start();
+
+//Problem One: https://adventofcode.com/2022/day/9
+
+var snekkTimer = new Stopwatch();
+snekkTimer.Start();
 
 var parser = new Parser();
-var snek = new Snek();
 var commands = parser.Parse(input);
+var snekk = new Snekk();
 var mover = new Mover();
 
-mover.DoTheChacha(commands, snek);
-snekTimer.Stop();
+mover.DoTheChacha(commands, snekk);
+snekkTimer.Stop();
+
+var problemOneResult = solutionOne == snekk.GetNumberOfTouchedFields() ? $"Yes the answer is {snekk.GetNumberOfTouchedFields()}"
+                                                                       : $"No the answer isnt {snekk.GetNumberOfTouchedFields()}";
+
+Console.WriteLine(problemOneResult);
+
+
+//Problem Two: https://adventofcode.com/2022/day/9
 
 var anacondaTimer = new Stopwatch();
 anacondaTimer.Start();
@@ -22,10 +35,15 @@ var mover2 = new Mover();
 var length = 9;
 var anaconda = new Anaconda(length);
 
-mover2.DoTheTango(commands2, anaconda);
+mover2.DoTheChacha(commands2, anaconda);
 anacondaTimer.Stop();
 
-Console.WriteLine(snek.GetNumberOfTouchedFields());
-Console.WriteLine(anaconda.GetTouchedFields());
-Console.WriteLine($"snek: {snekTimer.Elapsed.TotalMilliseconds} ms");
-Console.WriteLine($"conda: {anacondaTimer.Elapsed.TotalMilliseconds} ms");
+var problemTwoResult = solutionTwo == anaconda.GetNumberOfTouchedFields() ? $"Yes the answer is {anaconda.GetNumberOfTouchedFields()}"
+                                                                          : $"No the answer isnt {anaconda.GetNumberOfTouchedFields()}";
+
+Console.WriteLine(problemTwoResult);
+
+
+
+Console.WriteLine($"Snekk: \t\t{snekkTimer.Elapsed.TotalMilliseconds} ms");
+Console.WriteLine($"Anna Conda: \t{anacondaTimer.Elapsed.TotalMilliseconds} ms");

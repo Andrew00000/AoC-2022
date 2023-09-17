@@ -11,19 +11,11 @@
         this.x = x;
     }
 
-    public void Execute(Snek snek)
+    public void Execute(IDangerNoodle dangerNoodle)
     {
         for (int i = 0; i < repeat; i++)
         {
-            snek.Move(y, x);
-        }
-    }
-
-    public void Execute(Anaconda anaconda)
-    {
-        for (int i = 0; i < repeat; i++)
-        {
-            anaconda.Move(y, x);
+            dangerNoodle.Move(y, x);
         }
     }
 }

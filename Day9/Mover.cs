@@ -1,18 +1,10 @@
 ﻿public class Mover
 {
-    public void DoTheChacha(IEnumerable<Command> commands, Snek snek)
+    public void DoTheChacha(IEnumerable<Command> commands, IDangerNoodle dangerNoodle)
     {
         foreach (var command in commands)
         {
-            command.Execute(snek);
-        };
-    }
-
-    internal void DoTheTango(IEnumerable<Command> commands, Anaconda anaconda)
-    {
-        foreach (var command in commands)
-        {
-            command.Execute(anaconda);
+            command.Execute(dangerNoodle);
         };
     }
 }

@@ -8,7 +8,7 @@
         foreach (var line in input)
         {
             var direction = line.Split(' ')[0];
-            var value = Int32.Parse(line.Split(' ')[1]);
+            var value = int.Parse(line.Split(' ')[1]);
 
             commands.Add(factory.CreateCommand(direction, value));            
         };
