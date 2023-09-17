@@ -4,28 +4,28 @@
     private (int y, int x) current;
     private (int y, int x) from;
     private (int height, int pathLength)[][] fieldTable;
-    private Dictionary<string, (int y, int x)> directions = new Dictionary<string, (int y, int x)>
+    private readonly (int y, int x)[] directions = 
     {
-        {"Up", (-1, 0) },
-        {"Down", (1, 0) },
-        {"Left", (0, -1) },
-        {"Right", (0, 1) },
+        (-1,  0),
+        ( 1,  0),
+        ( 0, -1),
+        ( 0,  1)
     };
 
-    private Queue<(int, int, int, int)> nodesToCheck= new Queue<(int y, int x, int fromY, int fromX)> ();
+    private Queue<(int, int, int, int)> nodesToCheck = new Queue<(int y, int x, int fromY, int fromX)> ();
     private HashSet<(int y, int x)> visitedNodes = new();
     public Map(int[][] intTable)
     {
-        var n = intTable.Length;
-        var m = intTable[0].Length;
-        fieldTable = new (int height, int pathLength)[n][];
+        var height = intTable.Length;
+        var width = intTable[0].Length;
+        fieldTable = new (int height, int pathLength)[height][];
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < height; i++)
         {
-            fieldTable[i] = new (int height, int pathLenght)[m];
-            for (int j = 0; j < m; j++)
+            fieldTable[i] = new (int height, int pathLenght)[width];
+            for (int j = 0; j < width; j++)
             {
-                fieldTable[i][j] = (intTable[i][j], n * m); 
+                fieldTable[i][j] = (intTable[i][j], height * width); 
             }
         }
     }
@@ -63,9 +63,9 @@
     {
         foreach (var direction in directions)
         {
-            if (ShouldCheck((direction.Value.y + current.y), (direction.Value.x + current.x), current.y, current.x))
+            if (ShouldCheck((direction.y + current.y), (direction.x + current.x), current.y, current.x))
             {
-                nodesToCheck.Enqueue(((direction.Value.y + current.y), (direction.Value.x + current.x), current.y, current.x));
+                nodesToCheck.Enqueue(((direction.y + current.y), (direction.x + current.x), current.y, current.x));
             }
         }
 
